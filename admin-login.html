@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login - Mahalaxmi Enterprises Portal</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    .admin-login-box {
+      width: 100%;
+      max-width: 440px;
+      background: #FFFFFF;
+      border-radius: var(--admin-radius);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
+    }
+    .login-header {
+      background: #0F172A;
+      color: #FFFFFF;
+      padding: 2.25rem 2rem 1.75rem;
+      text-align: center;
+      border-bottom: 3px solid var(--admin-accent);
+    }
+    .login-body {
+      padding: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="admin-login-box">
+    <!-- Header with Brand -->
+    <div class="login-header">
+      <img src="assets/logo-white.svg" alt="Mahalaxmi Enterprises" style="height: 48px; margin: 0 auto 1rem;">
+      <h2 style="font-size: 1.4rem; color: #FFFFFF; margin-bottom: 0.25rem;">Admin Control Center</h2>
+      <p style="font-size: 0.85rem; color: #94A3B8;">Sign in to manage products, enquiries &amp; website settings</p>
+    </div>
+
+    <!-- Security Notice -->
+    <div style="background: #EFF6FF; border-bottom: 1px solid #BFDBFE; padding: 0.75rem 1.25rem; font-size: 0.8rem; color: #1E40AF; display: flex; gap: 0.5rem; align-items: flex-start;">
+      <i class="fas fa-shield-halved" style="margin-top: 0.15rem; color: #3B82F6; flex-shrink: 0;"></i>
+      <span><strong>Secured Access:</strong> Authentication is handled by Supabase Auth. Access to admin data is enforced by Row Level Security policies.</span>
+    </div>
+
+    <div class="login-body">
+      <!-- Shown when bounced back from admin.html for lacking an admins row -->
+      <div id="adminLoginNotice" style="display: none; background: #FEF2F2; border: 1px solid #FECACA; border-radius: 8px; padding: 0.75rem 1rem; margin-bottom: 1.25rem; font-size: 0.84rem; color: #B91C1C;">
+        <strong><i class="fas fa-ban"></i> Access denied:</strong> This account is not authorized as an admin.
+      </div>
+
+      <!-- Inline sign-in error -->
+      <div id="adminLoginError" style="display: none; background: #FEF2F2; border: 1px solid #FECACA; border-radius: 8px; padding: 0.75rem 1rem; margin-bottom: 1.25rem; font-size: 0.84rem; color: #B91C1C;"></div>
+
+      <form id="adminLoginForm">
+        <div class="form-group">
+          <label class="form-label" for="adminEmail">Admin Email</label>
+          <div style="position: relative;">
+            <input type="email" id="adminEmail" class="form-input" placeholder="you@example.com" autocomplete="username" required style="padding-left: 2.4rem;">
+            <i class="fas fa-user" style="position: absolute; left: 0.9rem; top: 50%; transform: translateY(-50%); color: #94A3B8;"></i>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="adminPassword">Password</label>
+          <div style="position: relative;">
+            <input type="password" id="adminPassword" class="form-input" placeholder="Enter password" autocomplete="current-password" required style="padding-left: 2.4rem;">
+            <i class="fas fa-lock" style="position: absolute; left: 0.9rem; top: 50%; transform: translateY(-50%); color: #94A3B8;"></i>
+          </div>
+        </div>
+
+        <button type="submit" id="adminLoginSubmitBtn" class="btn-submit-primary" style="background: var(--admin-accent);">
+          <i class="fas fa-sign-in-alt"></i> Access Admin Dashboard
+        </button>
+      </form>
+
+      <div style="text-align: center; margin-top: 1.5rem;">
+        <a href="index.html" style="font-size: 0.88rem; color: #64748B; font-weight: 500;">
+          &larr; Return to Customer Website
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Supabase SDK + client bootstrap (must load before the inline script below) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/supabase-client.js"></script>
+
+  <script src="js/config.js"></script>
+  <script src="js/database.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      if (!isSupabaseReady()) {
+        App.toast("Supabase is not configured. Edit js/supabase-config.js.", "error");
+        return;
+      }
+
+      const sb = getSupabaseClient();
+
+      const showError = (message) => {
+        const errBox = document.getElementById("adminLoginError");
+        errBox.innerHTML = "<strong><i class='fas fa-circle-exclamation'></i> </strong>" + App.escapeHtml(message);
+        errBox.style.display = "block";
+      };
+
+      // Bounced back from admin.html for not being in the `admins` table?
+      if (new URLSearchParams(window.location.search).get("reason") === "not-admin") {
+        document.getElementById("adminLoginNotice").style.display = "block";
+      }
+
+      // If already signed in, only proceed when the user is actually an admin.
+      // A plain session is no longer sufficient (see the `admins` table RLS).
+      const { data: sessionData } = await sb.auth.getSession();
+      if (sessionData && sessionData.session) {
+        const isAdmin = await isCurrentUserAdmin();
+        if (isAdmin) {
+          window.location.href = "admin.html";
+          return;
+        }
+        // Authenticated but not an admin — drop the useless session and show
+        // the notice instead of silently looping back here.
+        try {
+          await sb.auth.signOut();
+        } catch (signOutErr) {
+          console.error("Supabase signOut failed:", signOutErr);
+        }
+        document.getElementById("adminLoginNotice").style.display = "block";
+      }
+
+      const form = document.getElementById("adminLoginForm");
+      const submitBtn = document.getElementById("adminLoginSubmitBtn");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const email = document.getElementById("adminEmail").value.trim();
+        const password = document.getElementById("adminPassword").value;
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Signing in...';
+        document.getElementById("adminLoginError").style.display = "none";
+
+        try {
+          const { data, error } = await sb.auth.signInWithPassword({ email, password });
+
+          if (error) {
+            showError(error.message || "Sign-in failed. Please check your credentials.");
+            return;
+          }
+
+          if (!data || !data.session) {
+            showError("Sign-in failed. Please try again.");
+            return;
+          }
+
+          // Valid login — but is this account in the `admins` table?
+          // If not, sign out immediately so a non-admin session never reaches
+          // the admin panel (or any admins-scoped RLS data), even briefly.
+          const isAdmin = await isCurrentUserAdmin();
+          if (!isAdmin) {
+            try {
+              await sb.auth.signOut();
+            } catch (signOutErr) {
+              console.error("Supabase signOut failed:", signOutErr);
+            }
+            showError("This account is not authorized as an admin.");
+            return;
+          }
+
+          App.toast("Login successful! Redirecting to Dashboard...", "success");
+          setTimeout(() => {
+            window.location.href = "admin.html";
+          }, 600);
+        } catch (err) {
+          console.error("Admin sign-in error:", err);
+          showError("Unexpected error during sign-in. Please try again.");
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Access Admin Dashboard';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

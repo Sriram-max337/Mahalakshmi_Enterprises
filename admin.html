@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Mahalaxmi Enterprises | Dhanalakshmi Pureit</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+
+  <!-- Admin Sidebar -->
+  <aside class="admin-sidebar">
+    <div class="sidebar-brand">
+      <img src="assets/logo-white.svg" alt="Mahalaxmi Enterprises Admin">
+    </div>
+
+    <ul class="sidebar-menu">
+      <li class="sidebar-section-title">Overview</li>
+      <li class="sidebar-item active">
+        <a href="#dashboard" data-tab-target="dashboard">
+          <i class="fas fa-chart-line"></i> <span>Dashboard</span>
+        </a>
+      </li>
+
+      <li class="sidebar-section-title">Catalogue Management</li>
+      <li class="sidebar-item">
+        <a href="#products" data-tab-target="products">
+          <i class="fas fa-tint"></i> <span>Products</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="#categories" data-tab-target="categories">
+          <i class="fas fa-tags"></i> <span>Categories</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="#banners" data-tab-target="banners">
+          <i class="fas fa-images"></i> <span>Home Banners</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="#services" data-tab-target="services">
+          <i class="fas fa-tools"></i> <span>Services</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="#solar" data-tab-target="solar">
+          <i class="fas fa-solar-panel"></i> <span>Solar Solutions</span>
+        </a>
+      </li>
+
+      <li class="sidebar-section-title">Customer Interactions</li>
+      <li class="sidebar-item">
+        <a href="#enquiries" data-tab-target="enquiries">
+          <i class="fas fa-file-invoice"></i> <span>Enquiries</span>
+          <span class="sidebar-badge" id="badgeSidebarEnquiries">0</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="#service-requests" data-tab-target="service-requests">
+          <i class="fas fa-wrench"></i> <span>Service Requests</span>
+          <span class="sidebar-badge" id="badgeSidebarService">0</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="#customers" data-tab-target="customers">
+          <i class="fas fa-users"></i> <span>Customers</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="#faq" data-tab-target="faq">
+          <i class="fas fa-question-circle"></i> <span>FAQ</span>
+        </a>
+      </li>
+
+      <li class="sidebar-section-title">Configurations</li>
+      <li class="sidebar-item">
+        <a href="#settings" data-tab-target="settings">
+          <i class="fas fa-cog"></i> <span>Website Settings</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="#whatsapp" data-tab-target="whatsapp">
+          <i class="fab fa-whatsapp"></i> <span>WhatsApp Settings</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="#backup" data-tab-target="backup">
+          <i class="fas fa-database"></i> <span>Backup &amp; Reset</span>
+        </a>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- Admin Main Wrapper -->
+  <div class="admin-main">
+
+    <!-- Topbar -->
+    <header class="admin-topbar">
+      <div class="topbar-left-ctrl">
+        <button class="sidebar-toggle-btn" id="sidebarToggleBtn" aria-label="Toggle sidebar">
+          <i class="fas fa-bars"></i>
+        </button>
+        <a href="index.html" target="_blank" class="admin-view-site">
+          <i class="fas fa-external-link-alt"></i> <span>View Live Website</span>
+        </a>
+      </div>
+
+      <div class="topbar-user">
+        <div class="user-profile-badge">
+          <div class="user-avatar">A</div>
+          <div>
+            <div class="user-name">Admin</div>
+            <div class="user-role">Super Admin</div>
+          </div>
+        </div>
+        <button class="btn-admin-logout" id="adminLogoutBtn">
+          <i class="fas fa-sign-out-alt"></i> <span>Logout</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Admin Content Container -->
+    <main class="admin-content">
+
+      <!-- Developer Security Notice Banner -->
+      <div class="dev-security-notice">
+        <i class="fas fa-shield-alt" style="font-size: 1.25rem;"></i>
+        <div>
+          <strong>Frontend Architecture:</strong> All changes made here update your LocalStorage database immediately and synchronize live across customer catalogue, details, cart, and services. In production, connect this layer to a backend API &amp; database.
+        </div>
+      </div>
+
+      <!-- ==========================================================================
+           TAB 1: DASHBOARD
+           ========================================================================== -->
+      <section class="admin-tab-pane active" id="tab-dashboard">
+        <div class="tab-page-header">
+          <div>
+            <h2>Operations Overview</h2>
+            <p>Real-time statistics from LocalStorage database</p>
+          </div>
+        </div>
+
+        <!-- Metric Stat Cards -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon products"><i class="fas fa-tint"></i></div>
+            <div class="stat-info">
+              <h4>Total Products</h4>
+              <div class="stat-number" id="statTotalProducts">0</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon enquiries"><i class="fas fa-file-invoice"></i></div>
+            <div class="stat-info">
+              <h4>Total Enquiries</h4>
+              <div class="stat-number" id="statTotalEnquiries">0</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon requests"><i class="fas fa-wrench"></i></div>
+            <div class="stat-info">
+              <h4>Service Requests</h4>
+              <div class="stat-number" id="statTotalServiceRequests">0</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon customers"><i class="fas fa-users"></i></div>
+            <div class="stat-info">
+              <h4>Demo Customers</h4>
+              <div class="stat-number" id="statTotalCustomers">0</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon categories"><i class="fas fa-tags"></i></div>
+            <div class="stat-info">
+              <h4>Categories</h4>
+              <div class="stat-number" id="statTotalCategories">0</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Enquiries Table -->
+        <div class="admin-card">
+          <div class="card-header-ctrl">
+            <h3 class="card-title"><i class="fas fa-bell" style="color: var(--admin-accent); margin-right: 6px;"></i> Recent Quotation Enquiries</h3>
+            <button class="btn-admin-add" onclick="AdminApp.switchTab('enquiries')">View All Enquiries</button>
+          </div>
+
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Customer</th>
+                  <th>Phone</th>
+                  <th>Product Inquired</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="recentEnquiriesTableBody">
+                <!-- Populated dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           TAB 2: PRODUCTS MANAGEMENT
+           ========================================================================== -->
+      <section class="admin-tab-pane" id="tab-products">
+        <div class="tab-page-header">
+          <div>
+            <h2>Product Management</h2>
+            <p>Create, update, duplicate, or delete water purifiers and accessories</p>
+          </div>
+          <button class="btn-admin-add" id="btnOpenAddProduct">
+            <i class="fas fa-plus"></i> Add New Product
+          </button>
+        </div>
+
+        <div class="admin-card">
+          <div class="card-header-ctrl">
+            <div class="ctrl-actions">
+              <input type="text" id="adminProductSearch" class="admin-search-input" placeholder="Search by name, brand, model...">
+              <select id="adminProductCatFilter" class="admin-filter-select">
+                <option value="">All Categories</option>
+                <option value="purifier">Purifier</option>
+                <option value="solar">Solar</option>
+                <option value="inverter">Inverter</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Image</th>
+                  <th>Product &amp; Model</th>
+                  <th>Brand</th>
+                  <th>Category</th>
+                  <th>Status</th>
+                  <th>Featured</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="adminProductsTableBody">
+                <!-- Populated by js/admin-products.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           TAB 3: CATEGORIES MANAGEMENT
+           ========================================================================== -->
+      <section class="admin-tab-pane" id="tab-categories">
+        <div class="tab-page-header">
+          <div>
+            <h2>Category Management</h2>
+            <p>Define and manage product categories</p>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 2rem;" class="catalog-layout">
+          <!-- Add Category Form -->
+          <div class="admin-card" style="padding: 1.75rem;">
+            <h3 style="font-size: 1.15rem; color: #0F172A; margin-bottom: 1.25rem;">Add New Category</h3>
+            <form id="addCategoryForm">
+              <div class="form-group">
+                <label class="form-label">Category Name <span class="req">*</span></label>
+                <input type="text" id="newCatName" class="form-input" placeholder="e.g. Alkaline RO Purifiers" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Description</label>
+                <textarea id="newCatDesc" class="form-textarea" placeholder="Brief description of this category"></textarea>
+              </div>
+              <button type="submit" class="btn-admin-add" style="width: 100%; justify-content: center;">
+                <i class="fas fa-plus"></i> Save Category
+              </button>
+            </form>
+          </div>
+
+          <!-- Existing Categories Table -->
+          <div class="admin-card">
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Category Name</th>
+                    <th>Slug</th>
+                    <th>Description</th>
+                    <th>Products</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="adminCategoriesTableBody">
+                  <!-- Populated dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           TAB 4: HOME BANNER MANAGEMENT
+           ========================================================================== -->
+      <section class="admin-tab-pane" id="tab-banners">
+        <div class="tab-page-header">
+          <div>
+            <h2>Homepage Hero Banners</h2>
+            <p>Customize hero headlines, promotional copy, images, and CTA buttons</p>
+          </div>
+          <button class="btn-admin-add" id="btnOpenAddBanner">
+            <i class="fas fa-plus"></i> Add New Banner
+          </button>
+        </div>
+
+        <div class="admin-card">
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Image</th>
+                  <th>Heading &amp; Subtitle</th>
+                  <th>Button Action</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="adminBannersTableBody">
+                <!-- Populated dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           TAB 5: SERVICES MANAGEMENT
+           ========================================================================== -->
+      <section class="admin-tab-pane" id="tab-services">
+        <div class="tab-page-header">
+          <div>
+            <h2>Water Purifier Services Management</h2>
+            <p>Manage installation, maintenance, AMC, and repair offerings</p>
+          </div>
+          <button class="btn-admin-add" id="btnOpenAddService">
+            <i class="fas fa-plus"></i> Add New Service
+          </button>
+        </div>
+
+        <div class="admin-card">
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Icon/Image</th>
+                  <th>Service Title</th>
+                  <th>Description</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="adminServicesTableBody">
+                <!-- Populated dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           TAB 6: SOLAR SOLUTIONS MANAGEMENT
+           ========================================================================== -->
+      <section class="admin-tab-pane" id="tab-solar">
+        <div class="tab-page-header">
+          <div>
+            <h2>Solar Solutions Management</h2>
+            <p>Manage solar inverters, batteries, and rooftop installations</p>
+          </div>
+          <button class="btn-admin-add" id="btnOpenAddSolar">
+            <i class="fas fa-plus"></i> Add Solar Solution
+          </button>
+        </div>
+
+        <div class="admin-card">
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Image</th>
+                  <th>Solution Name</th>
+                  <th>Category</th>
+                  <th>Capacity</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="adminSolarTableBody">
+                <!-- Populated dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           TAB 7: ENQUIRIES MANAGEMENT
+           ========================================================================== -->
+      <section class="admin-tab-pane" id="tab-enquiries">
+        <div class="tab-page-header">
+          <div>
+            <h2>Quotation Enquiries Management</h2>
+            <p>View and manage quotation requests submitted via website enquiry cart and forms</p>
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <div class="card-header-ctrl">
+            <div class="ctrl-actions">
+              <input type="text" id="enquirySearchInput" class="admin-search-input" placeholder="Search customer, phone, product...">
+              <select id="enquiryStatusFilter" class="admin-filter-select">
+                <option value="">All Statuses</option>
+                <option value="New">New</option>
+                <option value="Contacted">Contacted</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+                <option value="Cancelled">Cancelled</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Customer</th>
+                  <th>Contact Info</th>
+                  <th>Products Inquired</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="adminEnquiriesTableBody">
+                <!-- Populated dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           TAB 8: SERVICE REQUESTS MANAGEMENT
+           ========================================================================== -->
+      <section class="admin-tab-pane" id="tab-service-requests">
+        <div class="tab-page-header">
+          <div>
+            <h2>Service Requests Management</h2>
+            <p>Doorstep technician tickets, maintenance requests, and filter replacements</p>
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Customer</th>
+                  <th>Phone</th>
+                  <th>Service &amp; Purifier</th>
+                  <th>Preferred Date</th>
+                  <th>Logged Date</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="adminServiceRequestsTableBody">
+                <!-- Populated dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           TAB 9: CUSTOMERS MANAGEMENT
+           ========================================================================== -->
+      <section class="admin-tab-pane" id="tab-customers">
+        <div class="tab-page-header">
+          <div>
+            <h2>Registered Customers</h2>
+            <p>Demo accounts registered via customer portal</p>
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Customer Name</th>
+                  <th>Phone</th>
+                  <th>Email</th>
+                  <th>Registration Date</th>
+                  <th>Activity</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="adminCustomersTableBody">
+                <!-- Populated dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           TAB 10: FAQ MANAGEMENT
+           ========================================================================== -->
+      <section class="admin-tab-pane" id="tab-faq">
+        <div class="tab-page-header">
+          <div>
+            <h2>FAQ Management</h2>
+            <p>Manage customer frequently asked questions and answers</p>
+          </div>
+          <button class="btn-admin-add" id="btnOpenAddFaq">
+            <i class="fas fa-plus"></i> Add New FAQ
+          </button>
+        </div>
+
+        <div class="admin-card">
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Question</th>
+                  <th>Category</th>
+                  <th>Answer</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="adminFaqTableBody">
+                <!-- Populated dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           TAB 11: WEBSITE SETTINGS
+           ========================================================================== -->
+      <section class="admin-tab-pane" id="tab-settings">
+        <div class="tab-page-header">
+          <div>
+            <h2>Website Settings</h2>
+            <p>Configure business details, contact information, map embed, and social links</p>
+          </div>
+          <button class="btn-admin-add" id="btnSaveSiteSettings">
+            <i class="fas fa-save"></i> Save All Settings
+          </button>
+        </div>
+
+        <div class="admin-card" style="padding: 2rem;">
+          <form id="websiteSettingsForm">
+            <h4 style="font-size: 1.1rem; color: #0F172A; margin-bottom: 1rem; border-bottom: 1px solid var(--admin-border); padding-bottom: 0.5rem;">
+              Business Identity
+            </h4>
+            <div class="modal-grid-2">
+              <div class="form-group">
+                <label class="form-label">Business Name</label>
+                <input type="text" id="settingBizName" class="form-input">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Brand Name</label>
+                <input type="text" id="settingBrandName" class="form-input">
+              </div>
+            </div>
+
+            <h4 style="font-size: 1.1rem; color: #0F172A; margin: 1.5rem 0 1rem; border-bottom: 1px solid var(--admin-border); padding-bottom: 0.5rem;">
+              Contact Information
+            </h4>
+            <div class="modal-grid-2">
+              <div class="form-group">
+                <label class="form-label">Display Phone</label>
+                <input type="text" id="settingPhone" class="form-input">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Clean Phone (Numbers only)</label>
+                <input type="text" id="settingPhoneClean" class="form-input">
+              </div>
+              <div class="form-group">
+                <label class="form-label">WhatsApp Number</label>
+                <input type="text" id="settingWhatsapp" class="form-input">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Support Email</label>
+                <input type="email" id="settingEmail" class="form-input">
+              </div>
+              <div class="form-group" style="grid-column: 1 / -1;">
+                <label class="form-label">Store / Office Address</label>
+                <input type="text" id="settingAddress" class="form-input">
+              </div>
+              <div class="form-group" style="grid-column: 1 / -1;">
+                <label class="form-label">Business Hours</label>
+                <input type="text" id="settingHours" class="form-input">
+              </div>
+              <div class="form-group" style="grid-column: 1 / -1;">
+                <label class="form-label">Google Maps Iframe Embed URL</label>
+                <input type="text" id="settingMaps" class="form-input">
+              </div>
+            </div>
+
+            <h4 style="font-size: 1.1rem; color: #0F172A; margin: 1.5rem 0 1rem; border-bottom: 1px solid var(--admin-border); padding-bottom: 0.5rem;">
+              Social Media Links
+            </h4>
+            <div class="modal-grid-2">
+              <div class="form-group">
+                <label class="form-label">Facebook URL</label>
+                <input type="text" id="settingFb" class="form-input">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Instagram URL</label>
+                <input type="text" id="settingInsta" class="form-input">
+              </div>
+              <div class="form-group">
+                <label class="form-label">YouTube URL</label>
+                <input type="text" id="settingYt" class="form-input">
+              </div>
+              <div class="form-group">
+                <label class="form-label">LinkedIn URL</label>
+                <input type="text" id="settingLinkedin" class="form-input">
+              </div>
+            </div>
+
+            <h4 style="font-size: 1.1rem; color: #0F172A; margin: 1.5rem 0 1rem; border-bottom: 1px solid var(--admin-border); padding-bottom: 0.5rem;">
+              Footer Information
+            </h4>
+            <div class="form-group">
+              <label class="form-label">Footer Description</label>
+              <textarea id="settingFooterDesc" class="form-textarea"></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Copyright Text</label>
+              <input type="text" id="settingCopyright" class="form-input">
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           TAB 12: WHATSAPP SETTINGS
+           ========================================================================== -->
+      <section class="admin-tab-pane" id="tab-whatsapp">
+        <div class="tab-page-header">
+          <div>
+            <h2>WhatsApp Configuration</h2>
+            <p>Configure automated WhatsApp enquiry routing and pre-filled message templates</p>
+          </div>
+          <button class="btn-admin-add" id="btnSaveWhatsAppSettings">
+            <i class="fas fa-save"></i> Save WhatsApp Settings
+          </button>
+        </div>
+
+        <div class="admin-card" style="padding: 2rem; max-width: 800px;">
+          <form id="whatsAppSettingsForm">
+            <div class="form-group">
+              <label class="form-label">WhatsApp Number (with country code, e.g. 9197014 10661) <span class="req">*</span></label>
+              <input type="text" id="waNumberInput" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Default General Greeting Message</label>
+              <textarea id="waDefaultMsg" class="form-textarea"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Product Enquiry Template <small style="color: #64748B;">(Variables: {product}, {model}, {brand})</small></label>
+              <textarea id="waProductMsg" class="form-textarea"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Multi-Item Enquiry Cart Template <small style="color: #64748B;">(Variables: {items}, {name}, {phone}, {location}, {message})</small></label>
+              <textarea id="waCartMsg" class="form-textarea" style="min-height: 120px;"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Service Request Template <small style="color: #64748B;">(Variables: {service}, {brand}, {model}, {name}, {phone}, {location}, {date}, {message})</small></label>
+              <textarea id="waServiceMsg" class="form-textarea" style="min-height: 120px;"></textarea>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           TAB 13: BACKUP & RESET
+           ========================================================================== -->
+      <section class="admin-tab-pane" id="tab-backup">
+        <div class="tab-page-header">
+          <div>
+            <h2>Data Tools, Backup &amp; Reset</h2>
+            <p>Export database to JSON file, restore from backup, or reset to factory demo seed</p>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;" class="catalog-layout">
+          <!-- Export / Import Card -->
+          <div class="admin-card" style="padding: 2rem;">
+            <h3 style="font-size: 1.2rem; color: #0F172A; margin-bottom: 0.75rem;">
+              <i class="fas fa-file-download" style="color: var(--admin-accent);"></i> Backup &amp; Restore
+            </h3>
+            <p style="font-size: 0.9rem; color: #64748B; margin-bottom: 1.5rem;">
+              Export all stored products, categories, enquiries, and settings into a JSON backup file on your local machine.
+            </p>
+            <button class="btn-admin-add" id="btnExportBackup" style="width: 100%; justify-content: center; margin-bottom: 1.5rem;">
+              <i class="fas fa-download"></i> Export Database (JSON)
+            </button>
+
+            <div style="border-top: 1px solid var(--admin-border); padding-top: 1.25rem;">
+              <label class="form-label">Restore from JSON File</label>
+              <input type="file" id="importBackupInput" accept=".json" class="form-input">
+            </div>
+          </div>
+
+          <!-- Reset Card -->
+          <div class="admin-card" style="padding: 2rem; border-color: #FECACA;">
+            <h3 style="font-size: 1.2rem; color: #DC2626; margin-bottom: 0.75rem;">
+              <i class="fas fa-exclamation-triangle"></i> Factory Reset Demo Data
+            </h3>
+            <p style="font-size: 0.9rem; color: #64748B; margin-bottom: 1.5rem;">
+              Revert all products, banners, services, FAQs, and settings to the initial clean demo state. This will wipe any custom products created during testing.
+            </p>
+            <button class="btn-admin-logout" id="btnResetData" style="width: 100%; justify-content: center; padding: 0.85rem; font-size: 0.95rem;">
+              <i class="fas fa-redo"></i> Reset to Default Demo Data
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ==========================================================================
+       MODALS
+       ========================================================================== -->
+
+  <!-- ADD / EDIT PRODUCT MODAL -->
+  <div class="admin-modal-backdrop" id="productModalBackdrop">
+    <div class="admin-modal">
+      <div class="modal-header">
+        <h3 id="productModalTitle">Add New Product</h3>
+        <button class="modal-close-btn" id="btnCloseProductModal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <form id="productForm">
+          <div class="modal-grid-2">
+            <div class="form-group">
+              <label class="form-label">Product Name <span class="req">*</span></label>
+              <input type="text" id="prodName" class="form-input" placeholder="e.g. Dhanalakshmi Pureit Copper+ RO" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">URL Slug <span class="req">*</span></label>
+              <input type="text" id="prodSlug" class="form-input" placeholder="e.g. pureit-copper-plus (unique)">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Brand</label>
+              <input type="text" id="prodBrand" class="form-input" value="Dhanalakshmi Pureit">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Category</label>
+              <select id="prodCategory" class="form-select">
+                <option value="purifier">Purifier</option>
+                <option value="solar">Solar</option>
+                <option value="inverter">Inverter</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Product Family</label>
+              <input type="text" id="prodFamily" class="form-input" placeholder="e.g. Copper+, Grand Mineral">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Storage / Purification Capacity</label>
+              <input type="text" id="prodCapacity" class="form-input" placeholder="e.g. 10 Litres / 15 LPH">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Price (₹)</label>
+              <input type="number" id="prodPrice" class="form-input" min="0" step="0.01" placeholder="e.g. 12999">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Discount Price (₹, optional)</label>
+              <input type="number" id="prodDiscountPrice" class="form-input" min="0" step="0.01" placeholder="e.g. 9999">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Stock Quantity</label>
+              <input type="number" id="prodStock" class="form-input" min="0" step="1" placeholder="e.g. 10">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Short Description <small style="color: #64748B;">(shown on catalogue cards)</small></label>
+            <textarea id="prodShortDesc" class="form-textarea" placeholder="One-line summary for catalogue cards" style="min-height: 70px;"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Full Description</label>
+            <textarea id="prodDescription" class="form-textarea" placeholder="Comprehensive product overview"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Key Features <small style="color: #64748B;">(One per line)</small></label>
+            <textarea id="prodFeatures" class="form-textarea" placeholder="7-Stage Advanced Multi-Barrier Purification&#10;Active 99.8% Pure Copper Infusion Chamber&#10;High-recovery Dow Filmtec equivalent membrane"></textarea>
+          </div>
+
+          <div class="form-group" style="margin-top: 0.5rem;">
+            <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: 600; cursor: pointer;">
+              <input type="checkbox" id="prodFeatured" style="width: 18px; height: 18px; accent-color: var(--admin-accent);">
+              <span>Mark as Featured Product (Displayed on Homepage)</span>
+            </label>
+          </div>
+
+          <!-- Product Image Upload / URL Section (single image_url column) -->
+          <div style="margin-top: 1.5rem; border-top: 1px solid var(--admin-border); padding-top: 1.25rem;">
+            <label class="form-label">Product Image (uploaded to Supabase Storage, or paste a URL)</label>
+            <div class="img-upload-group">
+              <div class="img-slot">
+                <img id="imgPreview0" src="assets/products/ro-pure-copper.svg" alt="Product image preview">
+                <div style="font-weight: 700; font-size: 0.75rem; margin-bottom: 0.25rem;">Main Image</div>
+                <input type="file" id="imgFile0" accept="image/*" class="img-slot-input">
+                <input type="text" id="imgUrl0" placeholder="or Image URL" class="img-slot-input" style="margin-top: 0.3rem;">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn-tbl" id="btnCancelProduct" style="width: auto; padding: 0.5rem 1rem;">Cancel</button>
+        <button type="button" class="btn-admin-add" id="btnSaveProduct">
+          <i class="fas fa-save"></i> Save Product
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADD / EDIT SERVICE MODAL -->
+  <div class="admin-modal-backdrop" id="serviceModalBackdrop">
+    <div class="admin-modal" style="max-width: 600px;">
+      <div class="modal-header">
+        <h3 id="serviceModalTitle">Add Service</h3>
+        <button class="modal-close-btn" id="btnCloseServiceModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="serviceForm">
+          <div class="form-group">
+            <label class="form-label">Service Title <span class="req">*</span></label>
+            <input type="text" id="servTitle" class="form-input" placeholder="e.g. Commercial RO Plant Service" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Description</label>
+            <textarea id="servDesc" class="form-textarea" placeholder="Service description"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Key Benefits <small style="color: #64748B;">(One per line)</small></label>
+            <textarea id="servBenefits" class="form-textarea" placeholder="TDS testing&#10;Pipeline sanitation&#10;Genuine filter replacements"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Service Illustration / Photo</label>
+            <div style="display: flex; gap: 1rem; align-items: center;">
+              <img id="serviceImagePreview" src="assets/services/installation.svg" style="width: 60px; height: 60px; border-radius: 6px; border: 1px solid var(--admin-border); object-fit: contain;">
+              <div style="flex-grow: 1;">
+                <input type="file" id="servImageFile" accept="image/*" class="img-slot-input" style="margin-bottom: 0.3rem;">
+                <input type="text" id="servImageUrl" placeholder="or Image Path/URL" class="form-input" style="padding: 0.4rem 0.6rem; font-size: 0.85rem;">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-tbl" id="btnCancelService" style="width: auto; padding: 0.5rem 1rem;">Cancel</button>
+        <button type="button" class="btn-admin-add" id="btnSaveService"><i class="fas fa-save"></i> Save Service</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADD / EDIT SOLAR MODAL -->
+  <div class="admin-modal-backdrop" id="solarModalBackdrop">
+    <div class="admin-modal" style="max-width: 600px;">
+      <div class="modal-header">
+        <h3 id="solarModalTitle">Add Solar Solution</h3>
+        <button class="modal-close-btn" id="btnCloseSolarModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="solarForm">
+          <div class="form-group">
+            <label class="form-label">Solution / Product Name <span class="req">*</span></label>
+            <input type="text" id="solarName" class="form-input" placeholder="e.g. Smart Solar Hybrid Inverter 5kVA" required>
+          </div>
+          <div class="modal-grid-2">
+            <div class="form-group">
+              <label class="form-label">Category</label>
+              <select id="solarCategory" class="form-select">
+                <option value="Solar Inverters">Solar Inverters</option>
+                <option value="Batteries">Batteries</option>
+                <option value="Residential Solar">Residential Solar</option>
+                <option value="Commercial Solar">Commercial Solar</option>
+                <option value="Solar Panels">Solar Panels</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Capacity / Rating</label>
+              <input type="text" id="solarCapacity" class="form-input" placeholder="e.g. 5 kVA / 48V">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Description</label>
+            <textarea id="solarDesc" class="form-textarea"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Features (One per line)</label>
+            <textarea id="solarFeatures" class="form-textarea"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Image</label>
+            <div style="display: flex; gap: 1rem; align-items: center;">
+              <img id="solarImagePreview" src="assets/solar/solar-inverter.svg" style="width: 60px; height: 60px; border-radius: 6px; border: 1px solid var(--admin-border); object-fit: contain;">
+              <div style="flex-grow: 1;">
+                <input type="file" id="solarImageFile" accept="image/*" class="img-slot-input" style="margin-bottom: 0.3rem;">
+                <input type="text" id="solarImageUrl" placeholder="or Image Path/URL" class="form-input" style="padding: 0.4rem 0.6rem; font-size: 0.85rem;">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-tbl" id="btnCancelSolar" style="width: auto; padding: 0.5rem 1rem;">Cancel</button>
+        <button type="button" class="btn-admin-add" id="btnSaveSolar"><i class="fas fa-save"></i> Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADD / EDIT HERO BANNER MODAL -->
+  <div class="admin-modal-backdrop" id="bannerModalBackdrop">
+    <div class="admin-modal" style="max-width: 650px;">
+      <div class="modal-header">
+        <h3 id="bannerModalTitle">Hero Banner</h3>
+        <button class="modal-close-btn" id="btnCloseBannerModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="bannerForm">
+          <div class="form-group">
+            <label class="form-label">Main Heading <span class="req">*</span></label>
+            <input type="text" id="bannerHeading" class="form-input" placeholder="e.g. Pure Water. Better Living." required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Subtitle</label>
+            <input type="text" id="bannerSubheading" class="form-input" placeholder="e.g. Smart Water Purification Solutions for Every Family.">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Description</label>
+            <textarea id="bannerDesc" class="form-textarea"></textarea>
+          </div>
+          <div class="modal-grid-2">
+            <div class="form-group">
+              <label class="form-label">Button 1 Text</label>
+              <input type="text" id="bannerBtn1Text" class="form-input" value="Explore Products">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Button 1 Link</label>
+              <input type="text" id="bannerBtn1Link" class="form-input" value="products.html">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Button 2 Text</label>
+              <input type="text" id="bannerBtn2Text" class="form-input" value="Get Free Enquiry">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Button 2 Link</label>
+              <input type="text" id="bannerBtn2Link" class="form-input" value="contact.html">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Banner Image</label>
+            <div style="display: flex; gap: 1rem; align-items: center;">
+              <img id="bannerImagePreview" src="assets/hero/hero-purifier.svg" style="width: 60px; height: 60px; border-radius: 6px; border: 1px solid var(--admin-border); object-fit: contain;">
+              <div style="flex-grow: 1;">
+                <input type="file" id="bannerImageFile" accept="image/*" class="img-slot-input" style="margin-bottom: 0.3rem;">
+                <input type="text" id="bannerImageUrl" placeholder="or Image Path/URL" class="form-input" style="padding: 0.4rem 0.6rem; font-size: 0.85rem;">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-tbl" id="btnCancelBanner" style="width: auto; padding: 0.5rem 1rem;">Cancel</button>
+        <button type="button" class="btn-admin-add" id="btnSaveBanner"><i class="fas fa-save"></i> Save Banner</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADD / EDIT FAQ MODAL -->
+  <div class="admin-modal-backdrop" id="faqModalBackdrop">
+    <div class="admin-modal" style="max-width: 600px;">
+      <div class="modal-header">
+        <h3 id="faqModalTitle">Add FAQ</h3>
+        <button class="modal-close-btn" id="btnCloseFaqModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="faqForm">
+          <div class="form-group">
+            <label class="form-label">Question <span class="req">*</span></label>
+            <input type="text" id="faqQuestionInput" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Category</label>
+            <input type="text" id="faqCategoryInput" class="form-input" placeholder="e.g. Water Purifiers / Services / Solar">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Answer <span class="req">*</span></label>
+            <textarea id="faqAnswerInput" class="form-textarea" style="min-height: 120px;" required></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-tbl" id="btnCancelFaq" style="width: auto; padding: 0.5rem 1rem;">Cancel</button>
+        <button type="button" class="btn-admin-add" id="btnSaveFaq"><i class="fas fa-save"></i> Save FAQ</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIEW ENQUIRY DETAILS MODAL -->
+  <div class="admin-modal-backdrop" id="enquiryDetailsModal">
+    <div class="admin-modal" style="max-width: 600px;">
+      <div class="modal-header">
+        <h3>Quotation Enquiry Details</h3>
+        <button class="modal-close-btn" id="btnCloseEnquiryModal">&times;</button>
+      </div>
+      <div class="modal-body" id="enquiryDetailsModalBody">
+        <!-- Injected dynamically by js/admin-enquiries.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/supabase-client.js"></script>
+
+  <script src="js/config.js"></script>
+  <script src="js/database.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/admin-products.js"></script>
+  <script src="js/admin-services.js"></script>
+  <script src="js/admin-enquiries.js"></script>
+  <script src="js/admin-settings.js"></script>
+</body>
+</html>

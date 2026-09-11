@@ -1,0 +1,7 @@
+{
+  "name": "mahalaxmi-enterprises",
+  "private": true,
+  "scripts": {
+    "build": "node build-config.js"
+  }
+}

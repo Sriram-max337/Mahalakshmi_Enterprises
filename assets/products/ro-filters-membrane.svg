@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="memGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="50%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#0369A1"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="450" fill="#F8FAFC" rx="16"/>
+  <ellipse cx="200" cy="405" rx="140" ry="16" fill="#CBD5E1" opacity="0.6"/>
+  <g transform="translate(60, 60)">
+    <!-- Spun Sediment Filter (White) -->
+    <g transform="translate(20, 30)">
+      <rect x="0" y="0" width="50" height="260" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+      <line x1="0" y1="40" x2="50" y2="40" stroke="#E2E8F0"/>
+      <line x1="0" y1="220" x2="50" y2="220" stroke="#E2E8F0"/>
+      <text x="25" y="130" font-family="sans-serif" font-size="10" font-weight="bold" fill="#64748B" transform="rotate(-90 25 130)" text-anchor="middle">5 MICRON SPUN</text>
+    </g>
+    <!-- Carbon Block Filter (Grey Mesh) -->
+    <g transform="translate(90, 30)">
+      <rect x="0" y="0" width="50" height="260" rx="10" fill="#334155" stroke="#1E293B" stroke-width="2"/>
+      <rect x="4" y="20" width="42" height="220" fill="#475569" stroke="#64748B" stroke-dasharray="3 3"/>
+      <text x="25" y="130" font-family="sans-serif" font-size="10" font-weight="bold" fill="#F8FAFC" transform="rotate(-90 25 130)" text-anchor="middle">CARBON BLOCK</text>
+    </g>
+    <!-- 80 GPD RO Membrane (Blue) -->
+    <g transform="translate(160, 20)">
+      <rect x="0" y="0" width="55" height="280" rx="12" fill="url(#memGrad)" stroke="#0284C7" stroke-width="2"/>
+      <!-- Membrane stem -->
+      <rect x="18" y="-18" width="18" height="20" fill="#E2E8F0" stroke="#94A3B8"/>
+      <rect x="18" y="280" width="18" height="22" fill="#E2E8F0" stroke="#94A3B8"/>
+      <rect x="5" y="60" width="45" height="70" rx="4" fill="#FFFFFF"/>
+      <text x="27" y="85" font-family="sans-serif" font-size="8" font-weight="bold" fill="#0369A1" text-anchor="middle">80 GPD</text>
+      <text x="27" y="100" font-family="sans-serif" font-size="7" fill="#0F172A" text-anchor="middle">RO TFC</text>
+      <text x="27" y="115" font-family="sans-serif" font-size="6" fill="#10B981" text-anchor="middle">CERTIFIED</text>
+    </g>
+    <!-- Taste Enhancer Post Carbon (Inline) -->
+    <g transform="translate(235, 45)">
+      <rect x="0" y="0" width="38" height="230" rx="19" fill="#0F172A" stroke="#334155" stroke-width="2"/>
+      <text x="19" y="120" font-family="sans-serif" font-size="8" font-weight="bold" fill="#38BDF8" transform="rotate(-90 19 120)" text-anchor="middle">POST CARBON</text>
+    </g>
+  </g>
+  <text x="200" y="380" font-family="sans-serif" font-size="14" font-weight="bold" fill="#0F172A" text-anchor="middle">COMPLETE ANNUAL RO FILTER KIT</text>
+</svg>

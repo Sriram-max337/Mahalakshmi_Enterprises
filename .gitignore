@@ -1,0 +1,21 @@
+# Environment / secrets (Supabase keys)
+.env
+.env.*
+!.env.example
+
+# Generated at build time from env vars (contains real Supabase values)
+js/supabase-config.js
+
+# OS junk
+Thumbs.db
+.DS_Store
+
+# Editor folders
+.vscode/
+.idea/
+
+# Dependencies
+node_modules/
+
+# Freebuff tool metadata
+.freebuff/

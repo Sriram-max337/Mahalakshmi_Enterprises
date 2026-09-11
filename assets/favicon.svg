@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70" width="70" height="70">
+  <defs>
+    <linearGradient id="favWater" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00D2FF" />
+      <stop offset="100%" stop-color="#0072CE" />
+    </linearGradient>
+    <linearGradient id="favShield" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0B192C" />
+      <stop offset="100%" stop-color="#1E3E62" />
+    </linearGradient>
+  </defs>
+  <rect width="70" height="70" rx="16" fill="url(#favShield)"/>
+  <circle cx="35" cy="35" r="28" stroke="url(#favWater)" stroke-width="2" fill="none" opacity="0.4"/>
+  <path d="M35 12 C35 12, 51 32, 51 43 C51 51.8, 43.8 59, 35 59 C26.2 59, 19 51.8, 19 43 C19 32, 35 12, 35 12 Z" fill="url(#favWater)"/>
+  <path d="M35 24 C37.5 31, 44 35, 44 43 C44 47, 41 50, 37 50 C34 50, 32 48, 32 45 C32 39, 35 24, 35 24 Z" fill="#FFFFFF" opacity="0.9"/>
+  <circle cx="42" cy="22" r="3" fill="#00FFC2"/>
+</svg>

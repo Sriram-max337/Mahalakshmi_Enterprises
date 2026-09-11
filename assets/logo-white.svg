@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 85" width="100%" height="100%">
+  <defs>
+    <linearGradient id="waterGradW" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="50%" stop-color="#0284C7" />
+      <stop offset="100%" stop-color="#0369A1" />
+    </linearGradient>
+    <linearGradient id="shieldGradW" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+  </defs>
+  <g transform="translate(10, 8)">
+    <path d="M35 2 C54 2, 70 18, 70 37 C70 56, 54 70, 35 70 C16 70, 0 56, 0 37 C0 18, 16 2, 35 2 Z" fill="url(#shieldGradW)" stroke="#38BDF8" stroke-width="1.5" />
+    <path d="M35 12 C35 12, 53 34, 53 45 C53 54.9, 44.9 63, 35 63 C25.1 63, 17 54.9, 17 45 C17 34, 35 12, 35 12 Z" fill="url(#waterGradW)" />
+    <path d="M35 26 C38 34, 46 38, 46 47 C46 51.5, 42.4 55, 38 55 C34.5 55, 32 52, 32 49 C32 42, 35 26, 35 26 Z" fill="#FFFFFF" opacity="0.9" />
+    <circle cx="43" cy="22" r="3" fill="#38BDF8" />
+  </g>
+  <g transform="translate(92, 12)">
+    <text x="0" y="28" font-family="'Poppins', 'Montserrat', -apple-system, sans-serif" font-weight="800" font-size="22" letter-spacing="0.5" fill="#FFFFFF">
+      DHANALAKSHMI <tspan fill="#38BDF8">PUREIT</tspan>
+    </text>
+    <text x="0" y="47" font-family="'Inter', -apple-system, sans-serif" font-weight="600" font-size="10.5" letter-spacing="2.2" fill="#94A3B8">
+      MAHALAXMI ENTERPRISES
+    </text>
+    <text x="0" y="61" font-family="'Inter', -apple-system, sans-serif" font-weight="500" font-size="8.5" letter-spacing="1" fill="#38BDF8">
+      ADVANCED WATER PURIFICATION &amp; SOLAR SYSTEMS
+    </text>
+  </g>
+</svg>

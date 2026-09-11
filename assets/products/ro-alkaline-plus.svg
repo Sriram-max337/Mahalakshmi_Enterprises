@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F0F9FF"/>
+      <stop offset="100%" stop-color="#E0F2FE"/>
+    </linearGradient>
+    <linearGradient id="blueAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#0369A1"/>
+    </linearGradient>
+    <linearGradient id="waterA" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#0284C7" stop-opacity="0.95"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="450" fill="url(#bgBlue)" rx="16"/>
+  <ellipse cx="200" cy="405" rx="130" ry="16" fill="#BAE6FD" opacity="0.6"/>
+  <g transform="translate(85, 45)">
+    <!-- Main Body -->
+    <rect x="0" y="0" width="230" height="345" rx="24" fill="#FFFFFF" stroke="#BAE6FD" stroke-width="2"/>
+    <!-- Top curved cap with blue finish -->
+    <path d="M0 45 C0 20, 20 0, 45 0 L185 0 C210 0, 230 20, 230 45 L230 75 L0 75 Z" fill="url(#blueAccent)"/>
+    <text x="115" y="45" font-family="'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF" text-anchor="middle">DHANALAKSHMI <tspan fill="#38BDF8">PUREIT</tspan></text>
+    <text x="115" y="65" font-family="'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#BAE6FD" text-anchor="middle">GRAND MINERAL RO + UV</text>
+    <!-- Digital TDS status display -->
+    <rect x="45" y="95" width="140" height="48" rx="8" fill="#0F172A" stroke="#0284C7" stroke-width="1.5"/>
+    <text x="115" y="118" font-family="monospace" font-size="14" font-weight="bold" fill="#00FFC2" text-anchor="middle">PURE TDS: 45 ppm</text>
+    <circle cx="65" cy="132" r="3" fill="#10B981"/>
+    <text x="115" y="135" font-family="sans-serif" font-size="8" fill="#94A3B8" text-anchor="middle">SYSTEM NORMAL | UV ACTIVE</text>
+    <!-- Transparent tank -->
+    <rect x="25" y="160" width="180" height="135" rx="14" fill="#F0F9FF" stroke="#38BDF8" stroke-width="1.5"/>
+    <!-- Water level -->
+    <path d="M26 210 Q70 205, 115 210 T204 208 L204 285 C204 291, 198 295, 190 295 L40 295 C32 295, 26 291, 26 285 Z" fill="url(#waterA)"/>
+    <!-- Mineralizer Cartridge indicator -->
+    <rect x="85" y="175" width="60" height="85" rx="6" fill="#FFFFFF" opacity="0.9" stroke="#0284C7" stroke-width="1.5"/>
+    <text x="115" y="215" font-family="sans-serif" font-size="9" font-weight="bold" fill="#0369A1" text-anchor="middle">MINERAL</text>
+    <text x="115" y="230" font-family="sans-serif" font-size="8" fill="#0284C7" text-anchor="middle">CARTRIDGE</text>
+    <!-- Tap -->
+    <g transform="translate(100, 305)">
+      <rect x="8" y="0" width="14" height="15" rx="3" fill="#64748B"/>
+      <path d="M12 15 L18 15 L17 32 L13 32 Z" fill="#0284C7"/>
+      <circle cx="15" cy="8" r="3" fill="#38BDF8"/>
+    </g>
+    <!-- Bottom metallic rim -->
+    <rect x="0" y="335" width="230" height="10" rx="4" fill="url(#blueAccent)"/>
+  </g>
+</svg>

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <radialGradient id="heroGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00A8E8" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0B192C" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="50%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#E2E8F0"/>
+    </linearGradient>
+    <linearGradient id="copperGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF9E66"/>
+      <stop offset="40%" stop-color="#E27233"/>
+      <stop offset="100%" stop-color="#9C4413"/>
+    </linearGradient>
+    <linearGradient id="waterGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#0284C7" stop-opacity="0.95"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#0284C7" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <!-- Background Glow & Rings -->
+  <circle cx="250" cy="250" r="230" fill="url(#heroGlow)"/>
+  <circle cx="250" cy="250" r="190" stroke="#38BDF8" stroke-width="1.5" stroke-dasharray="8 6" fill="none" opacity="0.4"/>
+  <circle cx="250" cy="250" r="220" stroke="#00C2CB" stroke-width="1" fill="none" opacity="0.25"/>
+  <ellipse cx="250" cy="450" rx="170" ry="22" fill="#0B192C" opacity="0.3"/>
+  <!-- Floating water bubbles / mineral orbs -->
+  <g opacity="0.8">
+    <circle cx="70" cy="180" r="18" fill="#38BDF8" opacity="0.3"/>
+    <circle cx="85" cy="310" r="24" fill="#00FFC2" opacity="0.25"/>
+    <circle cx="430" cy="190" r="22" fill="#FF9E66" opacity="0.3"/>
+    <circle cx="410" cy="340" r="16" fill="#38BDF8" opacity="0.4"/>
+  </g>
+  <!-- Hero Purifier Model -->
+  <g transform="translate(40, 15)" filter="url(#shadow)">
+    <rect x="90" y="55" width="240" height="340" rx="28" fill="url(#bodyGrad)" stroke="#CBD5E1" stroke-width="2"/>
+    <path d="M90 90 C90 70, 105 55, 125 55 L295 55 C315 55, 330 70, 330 90 L330 115 L90 115 Z" fill="#0F172A"/>
+    <rect x="130" y="70" width="160" height="28" rx="6" fill="#1E293B" stroke="url(#copperGrad)" stroke-width="1.5"/>
+    <text x="210" y="88" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="bold" fill="#38BDF8" text-anchor="middle">DHANALAKSHMI <tspan fill="#FF9E66">PUREIT</tspan></text>
+    <rect x="140" y="130" width="140" height="42" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+    <circle cx="160" cy="151" r="5" fill="#10B981"/>
+    <circle cx="193" cy="151" r="5" fill="#38BDF8"/>
+    <circle cx="226" cy="151" r="5" fill="#FF9E66"/>
+    <circle cx="260" cy="151" r="5" fill="#3B82F6"/>
+    <!-- Tank & Water -->
+    <rect x="115" y="190" width="190" height="150" rx="16" fill="#E0F2FE" stroke="#93C5FD" stroke-width="2" opacity="0.9"/>
+    <path d="M117 245 Q160 240, 210 245 T303 243 L303 338 C303 347, 295 353, 285 353 L135 353 C125 353, 117 347, 117 338 Z" fill="url(#waterGrad)"/>
+    <rect x="185" y="215" width="50" height="110" rx="8" fill="url(#copperGrad)" opacity="0.9" stroke="#FFD8BE" stroke-width="1"/>
+    <text x="210" y="275" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">COPPER</text>
+    <circle cx="155" cy="280" r="4" fill="#FFFFFF" opacity="0.7"/>
+    <circle cx="270" cy="300" r="3" fill="#FFFFFF" opacity="0.7"/>
+    <g transform="translate(195, 350)">
+      <rect x="5" y="0" width="20" height="18" rx="4" fill="#94A3B8"/>
+      <path d="M10 18 L20 18 L18 36 L12 36 Z" fill="url(#copperGrad)"/>
+      <circle cx="15" cy="10" r="4" fill="#0F172A"/>
+    </g>
+    <rect x="90" y="380" width="240" height="6" fill="url(#copperGrad)"/>
+  </g>
+</svg>

@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#E2E8F0"/>
+    </linearGradient>
+    <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="50%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#E2E8F0"/>
+    </linearGradient>
+    <linearGradient id="copperGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF9E66"/>
+      <stop offset="40%" stop-color="#E27233"/>
+      <stop offset="100%" stop-color="#9C4413"/>
+    </linearGradient>
+    <linearGradient id="waterGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#0284C7" stop-opacity="0.95"/>
+    </linearGradient>
+    <linearGradient id="blackPanel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="#0F172A" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  <rect width="400" height="450" fill="url(#bgGrad)" rx="16"/>
+  <ellipse cx="200" cy="405" rx="140" ry="18" fill="#CBD5E1" opacity="0.6"/>
+  <!-- Purifier Outer Case -->
+  <g filter="url(#shadow)">
+    <rect x="80" y="50" width="240" height="340" rx="28" fill="url(#bodyGrad)" stroke="#CBD5E1" stroke-width="2"/>
+    <!-- Top Cap -->
+    <path d="M80 85 C80 65, 95 50, 115 50 L285 50 C305 50, 320 65, 320 85 L320 110 L80 110 Z" fill="#0F172A"/>
+    <rect x="120" y="65" width="160" height="28" rx="6" fill="#1E293B" stroke="url(#copperGrad)" stroke-width="1.5"/>
+    <text x="200" y="83" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="bold" fill="#38BDF8" text-anchor="middle">DHANALAKSHMI <tspan fill="#FF9E66">PUREIT</tspan></text>
+    <text x="200" y="102" font-family="'Segoe UI', Roboto, sans-serif" font-size="9" fill="#94A3B8" text-anchor="middle">COPPER+ ALKALINE RO</text>
+    <!-- Digital Display Panel -->
+    <rect x="130" y="125" width="140" height="45" rx="8" fill="url(#blackPanel)" stroke="#334155" stroke-width="1.5"/>
+    <!-- LED Indicators -->
+    <circle cx="150" cy="148" r="5" fill="#10B981"/>
+    <circle cx="183" cy="148" r="5" fill="#38BDF8"/>
+    <circle cx="216" cy="148" r="5" fill="#FF9E66"/>
+    <circle cx="250" cy="148" r="5" fill="#3B82F6"/>
+    <text x="150" y="162" font-size="6" fill="#94A3B8" text-anchor="middle">PWR</text>
+    <text x="183" y="162" font-size="6" fill="#94A3B8" text-anchor="middle">RO</text>
+    <text x="216" y="162" font-size="6" fill="#94A3B8" text-anchor="middle">CU+</text>
+    <text x="250" y="162" font-size="6" fill="#94A3B8" text-anchor="middle">FULL</text>
+    <!-- Transparent Water Tank Window -->
+    <rect x="105" y="185" width="190" height="150" rx="16" fill="#E0F2FE" stroke="#93C5FD" stroke-width="2" opacity="0.85"/>
+    <!-- Water level -->
+    <path d="M107 240 Q150 235, 200 240 T293 238 L293 333 C293 342, 285 348, 275 348 L125 348 C115 348, 107 342, 107 333 Z" fill="url(#waterGrad)"/>
+    <!-- Internal Copper Chamber Silhouette -->
+    <rect x="175" y="210" width="50" height="110" rx="8" fill="url(#copperGrad)" opacity="0.9" stroke="#FFD8BE" stroke-width="1"/>
+    <text x="200" y="270" font-family="'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">COPPER</text>
+    <!-- Water sparkles -->
+    <circle cx="145" cy="275" r="4" fill="#FFFFFF" opacity="0.7"/>
+    <circle cx="260" cy="295" r="3" fill="#FFFFFF" opacity="0.7"/>
+    <!-- Dispensing Tap -->
+    <g transform="translate(185, 345)">
+      <rect x="5" y="0" width="20" height="18" rx="4" fill="#94A3B8"/>
+      <path d="M10 18 L20 18 L18 36 L12 36 Z" fill="url(#copperGrad)"/>
+      <circle cx="15" cy="10" r="4" fill="#0F172A"/>
+    </g>
+    <!-- Copper decorative strip -->
+    <rect x="80" y="375" width="240" height="6" fill="url(#copperGrad)"/>
+  </g>
+</svg>
