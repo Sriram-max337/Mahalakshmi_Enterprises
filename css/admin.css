@@ -601,21 +601,6 @@ body.admin-body {
   width: 100%;
 }
 
-/* Developer Note Banner */
-.dev-security-notice {
-  background: #EFF6FF;
-  border: 1px solid #BFDBFE;
-  border-left: 4px solid #3B82F6;
-  padding: 0.9rem 1.25rem;
-  border-radius: 6px;
-  font-size: 0.85rem;
-  color: #1E40AF;
-  margin-bottom: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
 /* Responsive Admin */
 @media (max-width: 991px) {
   .admin-sidebar {
