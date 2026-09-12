@@ -381,7 +381,7 @@ a {
     color: var(--secondary);
     font-size: 15px;
     font-weight: 700;
-    padding: 10px 0;
+    padding: 12px 0; /* 12px padding + text ≈ 44px tap target */
     border-bottom: 1px solid #F1F5F9;
     display: flex;
     align-items: center;
@@ -477,6 +477,22 @@ a {
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
+}
+
+/* Tap-target floor for the carousel dots (visual size unchanged) */
+.hero-dot::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+.hero-dot {
+    position: relative;
 }
 
 .hero-dot.active {
@@ -1158,6 +1174,27 @@ a {
 /* =========================================================
    RESPONSIVE MEDIA QUERIES (MOBILE FIRST COMPLIANT)
 ========================================================= */
+/* 861px–1199px: the nav menu is still visible here but the full logo + menu +
+   actions row doesn't fit; compress the menu and make the WhatsApp button
+   icon-only so the header never overflows (measured 94px over @1024) */
+@media (min-width: 861px) and (max-width: 1199px) {
+    .nav-menu {
+        gap: 14px;
+        flex-wrap: wrap;
+        min-width: 0;
+    }
+    .nav-menu a {
+        font-size: 14.5px;
+        white-space: nowrap;
+    }
+    .btn-header-wa span {
+        display: none;
+    }
+    .btn-header-wa {
+        padding: 10px 14px;
+    }
+}
+
 @media (max-width: 1080px) {
     .header-search {
         display: none;
@@ -1219,6 +1256,33 @@ a {
     }
     .logo-subtitle {
         font-size: 9.5px;
+    }
+    /* Header overflow fix: the logo block and actions row must be allowed to
+       shrink on narrow phones, otherwise the row pushes past the viewport */
+    .logo-area {
+        flex-shrink: 1;
+        min-width: 0;
+    }
+    .logo-area > div {
+        min-width: 0;
+    }
+    .logo-name {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+    }
+    .header-actions {
+        flex-shrink: 1;
+        min-width: 0;
+    }
+    /* Footer links: comfortable tap targets on touch screens */
+    .footer-links a {
+        display: inline-block;
+        padding: 10px 0;
+    }
+    .footer-links li {
+        margin-bottom: 2px;
     }
     .btn-header-wa span {
         display: none;

@@ -947,3 +947,144 @@ button, a, .nav-action-btn, .btn-tbl, .cart-qty-btn {
     font-size: 0.8rem;
   }
 }
+
+/* ==========================================================================
+   RESPONSIVE AUDIT ADDENDUM — fixes found via measured browser sweep at
+   375 / 768 / 1024 px. Grouped by breakpoint, original rules above untouched.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1) SMALL LAPTOPS (992px – 1199px): desktop nav was overflowing by ~194px
+      because app.js injects drawer-only chrome (.nav-drawer-header,
+      .nav-drawer-contact-box) into .nav-links on every viewport, and the
+      desktop nav had no room to breathe between 992–1199px.
+   -------------------------------------------------------------------------- */
+@media (min-width: 992px) and (max-width: 1199px) {
+  /* Drawer-only chrome must never render inside the horizontal nav */
+  .nav-drawer-header,
+  .nav-drawer-contact-box {
+    display: none !important;
+  }
+
+  /* Let the nav compress gracefully instead of overflowing the header */
+  .nav-links {
+    gap: 0.9rem;
+    min-width: 0;
+    flex-wrap: wrap;
+  }
+  .nav-link {
+    font-size: 0.88rem;
+    white-space: nowrap;
+  }
+  .navbar-container {
+    gap: 1rem;
+  }
+  .nav-actions {
+    gap: 0.6rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2) TABLETS + PHONES: inline style="display:grid;grid-template-columns:..."
+      in about/contact/enquiry/services beats normal media-query rules, so
+      those grids never stacked. !important is required to beat inline styles.
+   -------------------------------------------------------------------------- */
+@media (max-width: 991px) {
+  /* about.html: intro image | text split */
+  .why-us-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* contact.html: business info | form split */
+  div.catalog-layout[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 640px) {
+  /* about.html: 3-up trust/promise cards */
+  .trust-cards-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* enquiry.html / services.html: side-by-side form rows */
+  #quickEnquiryForm div[style*="grid-template-columns"],
+  #serviceRequestForm div[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+    gap: 0;
+  }
+
+  /* Touch-target floor for controls that measured < 38px tall */
+  .btn-reset-filters,
+  .btn-card-action,
+  .nav-drawer-close {
+    min-height: 44px;
+  }
+  .btn-reset-filters {
+    padding: 0.5rem 1rem;
+  }
+
+  /* Drawer nav links + footer/topbar links: comfortable tap targets on touch.
+     Drawer links are primary navigation → 44px; dense footer/topbar text links
+     get enough padding to clear the WCAG 2.2 AA 24px minimum comfortably. */
+  .nav-links .nav-link {
+    min-height: 44px;
+  }
+  .topbar-item a,
+  a.topbar-item,
+  .footer a {
+    display: inline-block;
+    padding: 6px 0;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   3) PHONES (max-width: 767px): catalog toolbar overflow (~43px) and
+      table scroll affordance + small controls.
+   -------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+  /* Catalogue toolbar: allow full reflow and full-width search field */
+  .toolbar-search {
+    min-width: 0;
+    width: 100%;
+  }
+  .toolbar-controls {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 0.6rem;
+  }
+  .sort-select {
+    flex: 1;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  /* Scroll affordance for horizontally scrollable admin data tables */
+  .table-responsive {
+    background:
+      linear-gradient(to right, #FFFFFF 30%, rgba(15, 23, 42, 0)) ,
+      linear-gradient(to left, #FFFFFF 30%, rgba(15, 23, 42, 0)) right,
+      radial-gradient(farthest-side at 0 50%, rgba(15, 23, 42, 0.18), transparent) left,
+      radial-gradient(farthest-side at 100% 50%, rgba(15, 23, 42, 0.18), transparent) right;
+    background-repeat: no-repeat;
+    background-size: 24px 100%, 24px 100%, 14px 100%, 14px 100%;
+    background-attachment: local, local, scroll, scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Touch-target floor for small admin controls */
+  .admin-modal .modal-close-btn,
+  .mobile-filter-trigger-btn,
+  .filter-close-btn,
+  .nav-drawer-close {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  .mobile-filter-trigger-btn {
+    padding: 0.65rem 1rem;
+  }
+  .filter-close-btn {
+    font-size: 1.15rem;
+  }
+}

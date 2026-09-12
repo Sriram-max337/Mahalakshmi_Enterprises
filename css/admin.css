@@ -734,6 +734,31 @@ body.admin-body {
     font-size: 0.82rem;
   }
 
+  /* Responsive audit: comfortable close-button tap target on phones */
+  .modal-close-btn {
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Responsive audit: touch-target floor for compact admin chrome */
+  .sidebar-toggle-btn {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  .admin-view-site,
+  .btn-admin-logout {
+    min-height: 44px;
+    padding: 0.6rem 0.8rem;
+  }
+  .btn-admin-primary,
+  .btn-admin-secondary,
+  .btn-admin-add {
+    min-height: 44px;
+  }
+
   .admin-modal {
     width: 95vw !important;
     max-width: 95vw !important;
