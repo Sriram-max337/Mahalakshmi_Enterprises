@@ -1087,4 +1087,73 @@ button, a, .nav-action-btn, .btn-tbl, .cart-qty-btn {
   .filter-close-btn {
     font-size: 1.15rem;
   }
+
+  /* Header icon buttons: keep set size (no flex-shrink) and align to the
+     site's 40px phone control scale (was 38px, desktop is 42px) */
+  .nav-action-btn,
+  .mobile-toggle {
+    flex-shrink: 0;
+  }
+  .nav-action-btn {
+    width: 40px;
+    height: 40px;
+  }
+  .mobile-toggle {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4) HEADER / FOOTER BUTTON POLISH — measured issues:
+      - ≥1200px: drawer chrome (.nav-drawer-header, .nav-drawer-contact-box)
+        still rendered inside the desktop nav, wrapping two nav labels onto
+        two lines (65px-tall list items) and making link gaps uneven.
+   -------------------------------------------------------------------------- */
+@media (min-width: 1200px) {
+  .nav-drawer-header,
+  .nav-drawer-contact-box {
+    display: none !important;
+  }
+  .nav-link {
+    white-space: nowrap;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5) KEYBOARD FOCUS RING — one consistent visual language for every
+      nav/footer control (none of them had any :focus-visible styling).
+   -------------------------------------------------------------------------- */
+.nav-link:focus-visible,
+.nav-action-btn:focus-visible,
+.btn-login:focus-visible,
+.mobile-toggle:focus-visible,
+.nav-drawer-close:focus-visible,
+.social-link:focus-visible,
+.footer-links a:focus-visible,
+.footer-contact-item a:focus-visible,
+.footer-bottom a:focus-visible {
+  outline: 2px solid var(--secondary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Footer bottom row (e.g. "Admin Panel" link): icon and label aligned on one
+   baseline with a consistent gap instead of loose inline flow */
+.footer-bottom a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+@media (max-width: 767px) {
+  /* Footer bottom link grows to a comfortable tap target on touch screens */
+  .footer-bottom a {
+    min-height: 40px;
+    padding: 8px 0;
+  }
 }

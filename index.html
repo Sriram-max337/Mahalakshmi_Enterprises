@@ -1353,6 +1353,95 @@ a {
         bottom: 16px;
     }
 }
+
+/* =========================================================
+   HEADER / FOOTER BUTTON POLISH (spacing, alignment, sizing)
+========================================================= */
+
+/* Single-line nav labels: two long links wrapped onto two lines at
+   1200-1399px, making the menu row unevenly sized */
+.nav-menu a {
+    white-space: nowrap;
+    line-height: 1.35;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+/* Search-pill submit button taller for a balanced pill */
+.search-action-btn {
+    padding: 9px 16px;
+}
+
+/* WhatsApp CTA matches the header's 40px control scale */
+.btn-header-wa {
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+/* Footer quick links: consistent 42px tap targets and even rhythm */
+.footer-links a {
+    display: inline-block;
+    padding: 10px 0;
+}
+
+.footer-links li {
+    margin-bottom: 2px;
+}
+
+/* Footer contact links: same tap height as quick links */
+.footer-contact-item a {
+    display: inline-block;
+    padding: 6px 0;
+}
+
+/* Consistent keyboard focus ring across header/footer controls */
+.nav-menu a:focus-visible,
+.btn-header-wa:focus-visible,
+.btn-mobile-search:focus-visible,
+.btn-mobile-menu:focus-visible,
+.search-action-btn:focus-visible,
+.footer-links a:focus-visible,
+.footer-contact-item a:focus-visible,
+.footer-bottom a:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+}
+
+@media (min-width: 1081px) and (max-width: 1399px) {
+    /* Narrow-desktop squeeze: hide the middle search bar first so nav
+       labels never wrap and the WhatsApp CTA stays single-line. The
+       icon search button (already wired to the dropdown) keeps search
+       reachable in this band. */
+    .header-search {
+        display: none;
+    }
+    .btn-mobile-search {
+        display: flex;
+    }
+}
+
+@media (max-width: 640px) {
+    /* Phone header: buttons keep their set 40px size (flex-shrink was
+       squeezing them) and the row breathes evenly against the screen edge */
+    .header-actions {
+        flex-shrink: 0;
+        gap: 8px;
+    }
+    .btn-mobile-search,
+    .btn-mobile-menu,
+    .btn-header-wa {
+        flex-shrink: 0;
+        min-width: 40px;
+        min-height: 40px;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .topbar-container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
 </style>
 </head>
 
