@@ -1120,6 +1120,11 @@ a {
     flex-shrink: 0;
 }
 
+/* Align the first contact line with the first quick link across columns */
+.footer-contact-item:first-child {
+    margin-top: 10px;
+}
+
 .footer-bottom {
     margin-top: 50px;
     padding-top: 24px;
@@ -1138,11 +1143,17 @@ a {
     font-size: 12px;
     display: inline-flex;
     align-items: center;
-    gap: 5px;
+    gap: 6px;
+    padding: 7px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-sm);
+    transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease;
 }
 
 .admin-access-link:hover {
     color: #38BDF8;
+    border-color: rgba(56, 189, 248, 0.35);
+    background: rgba(56, 189, 248, 0.08);
 }
 
 /* =========================================================
@@ -1344,6 +1355,11 @@ a {
     .footer-bottom {
         flex-direction: column;
         text-align: center;
+        gap: 12px;
+        margin-top: 36px;
+    }
+    .footer-bottom .admin-access-link {
+        padding: 10px 16px;
     }
     .whatsapp-float-btn {
         width: 52px;
@@ -1378,10 +1394,12 @@ a {
     padding-bottom: 12px;
 }
 
-/* Footer quick links: consistent 42px tap targets and even rhythm */
+/* Footer quick links: consistent 42px tap targets and even rhythm;
+   hover indent glides instead of jumping */
 .footer-links a {
     display: inline-block;
     padding: 10px 0;
+    transition: color 0.25s ease, padding 0.25s ease;
 }
 
 .footer-links li {
